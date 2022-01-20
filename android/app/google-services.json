@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "785428171837",
+    "firebase_url": "https://fluttergram-5069b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "fluttergram-5069b",
+    "storage_bucket": "fluttergram-5069b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785428171837:android:4d23904ff50cf25d4eae54",
+        "android_client_info": {
+          "package_name": "com.example.instagram_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785428171837-f5qvfnldp55rjb3l8ho8k0fgh99anevu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkGEsr8HmGfK-EpOYPr2faIpkroJPpjgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785428171837-f5qvfnldp55rjb3l8ho8k0fgh99anevu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
