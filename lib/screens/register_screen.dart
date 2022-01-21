@@ -1,12 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:instagram_clone/services/services.dart';
 import 'package:instagram_clone/utils/utils.dart';
-import 'package:instagram_clone/widgets/loading_indicator.dart';
 import 'package:instagram_clone/widgets/widgets.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -148,20 +146,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(height: 24),
               InkWell(
                 onTap: signUpHandler,
-                child: _isLoading
-                    ? const LoadingIndicator()
-                    : Container(
-                        child: const Text('Sign Up'),
-                        width: double.infinity,
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        decoration: ShapeDecoration(
-                          color: blueColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                        ),
-                      ),
+                child: Container(
+                  child: _isLoading
+                      ? const LoadingIndicator()
+                      : const Text('Sign Up'),
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: ShapeDecoration(
+                    color: blueColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(height: 12),
               Row(
