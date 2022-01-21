@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram_clone/utils/colors.dart';
-import 'package:instagram_clone/widgets/text_field_input.dart';
+
+import 'package:instagram_clone/utils/utils.dart';
+import 'package:instagram_clone/widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -47,12 +48,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 hintText: 'Enter your email',
                 textEditingController: _emailController,
                 textInputType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: 24),
               TextFieldInput(
                 hintText: 'Enter your password',
                 textEditingController: _passwordController,
                 textInputType: TextInputType.text,
+                textInputAction: TextInputAction.done,
                 isPass: true,
               ),
               const SizedBox(height: 24),
