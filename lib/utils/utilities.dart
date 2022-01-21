@@ -11,11 +11,7 @@ pickImage(ImageSource source) async {
   debugPrint('No Image Selected');
 }
 
-showSnackbar(
-  String content,
-  BuildContext context, {
-  Color bgColor = Colors.transparent,
-}) {
+showSnackbar(String content, BuildContext context) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(

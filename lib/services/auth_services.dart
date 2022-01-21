@@ -46,17 +46,23 @@ class AuthServices {
           'photoUrl': photoUrl,
         });
 
-        res = 'Success created account.';
+        res = 'Account created successfully.';
       }
     } on FirebaseAuthException catch (e) {
+      debugPrint('ERROR CODE AND MESSAGE: $e');
       switch (e.code) {
         case 'email-already-in-use':
-          return 'Email already exists.';
+          res = 'The email address is already in use by another account.';
+          break;
         case 'weak-password':
-          return 'Password must be at least 6 characters.';
+          res = 'Password should be at least 6 characters.';
+          break;
+        case 'invalid-email':
+          res = 'The email address is badly formatted.';
+          break;
         default:
+          res = e.code.toString();
       }
-      res = e.code.toString();
     }
     return res;
   }
