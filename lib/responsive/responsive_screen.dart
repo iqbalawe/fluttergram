@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/utils/dimensions.dart';
+
+import 'package:instagram_clone/utils/utils.dart';
 
 class ResponsiveScreen extends StatelessWidget {
   const ResponsiveScreen({

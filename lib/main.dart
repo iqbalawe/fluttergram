@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/responsive/mobile_screen_layout.dart';
-import 'package:instagram_clone/responsive/responsive_screen.dart';
-import 'package:instagram_clone/responsive/web_screen_layout.dart';
-import 'package:instagram_clone/utils/colors.dart';
+import 'package:instagram_clone/screens/register_screen.dart';
+
+import 'responsive/responsive.dart';
+import 'utils/utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,10 +35,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: mobileBackgroundColor,
       ),
-      home: const ResponsiveScreen(
-        webScrenLayout: WebScreenLayout(),
-        mobileScrenLayout: MobileScreenLayout(),
-      ),
+      // home: const ResponsiveScreen(
+      //   webScrenLayout: WebScreenLayout(),
+      //   mobileScrenLayout: MobileScreenLayout(),
+      // ),
+      home: const RegisterScreen(),
     );
   }
 }
