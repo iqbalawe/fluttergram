@@ -2,9 +2,11 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
-import 'package:instagram_clone/services/services.dart';
+// import '../models/user.dart' as userModel;
+import '../models/models.dart';
+import '../services/services.dart';
+import '../utils/utils.dart';
 
 class AuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -29,40 +31,55 @@ class AuthServices {
           email: email,
           password: password,
         );
-        debugPrint('USER UID: ${credential.user!.uid}');
+
+        logger.i('USER UID: ${credential.user!.uid}');
 
         // call upload image method
         String photoUrl =
             await StorageServices().uploadImage('profilePics', file, false);
 
         // add user to Firestore Database
-        await _firestore.collection('users').doc(credential.user!.uid).set({
-          'username': username,
-          'uid': credential.user!.uid,
-          'email': email,
-          'bio': bio,
-          'followers': [],
-          'following': [],
-          'photoUrl': photoUrl,
-        });
+        UserModel user = UserModel(
+          email: email,
+          uid: credential.user!.uid,
+          photoUrl: photoUrl,
+          username: username,
+          bio: bio,
+          followers: [],
+          following: [],
+        );
 
-        res = 'Account created successfully.';
+        await _firestore
+            .collection('users')
+            .doc(credential.user!.uid)
+            .set(user.toJson());
+
+        res = 'success';
       }
-    } on FirebaseAuthException catch (e) {
-      debugPrint('ERROR CODE AND MESSAGE: $e');
-      switch (e.code) {
-        case 'email-already-in-use':
-          res = 'The email address is already in use by another account.';
-          break;
-        case 'weak-password':
-          res = 'Password should be at least 6 characters.';
-          break;
-        case 'invalid-email':
-          res = 'The email address is badly formatted.';
-          break;
-        default:
-          res = e.code.toString();
+    } catch (e) {
+      logger.i('ERROR CODE AND MESSAGE: $e');
+    }
+    return res;
+  }
+
+  Future<String> loginUser({
+    required String email,
+    required String password,
+  }) async {
+    String res = 'Some error occured';
+
+    try {
+      if (email.isNotEmpty || password.isNotEmpty) {
+        await _auth.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        res = 'success';
+      } else {
+        res = 'Please enter all the fields';
       }
+    } catch (e) {
+      logger.i('ERROR CODE AND MESSAGE: $e');
     }
     return res;
   }
