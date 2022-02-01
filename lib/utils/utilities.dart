@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:logger/logger.dart';
+
+var logger = Logger(printer: PrettyPrinter());
 
 pickImage(ImageSource source) async {
   final ImagePicker _imagePicker = ImagePicker();
@@ -8,7 +11,7 @@ pickImage(ImageSource source) async {
   if (_file != null) {
     return await _file.readAsBytes();
   }
-  debugPrint('No Image Selected');
+  logger.w('No Image Selected');
 }
 
 showSnackbar(String content, BuildContext context) {
